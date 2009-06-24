@@ -6,7 +6,7 @@ import org.junit.*;
 public class WORMTest extends de.tuebingen.informatik.Test {
     Item item1 = new Item("Sperber", 100);
     Item item2 = new Item("Crestani", 200);
-    Item item3 = new Item("Klaeren", 300);        
+    Item item3 = new Item("Klaeren", 300);
     
     @Test
     public void put1() {
