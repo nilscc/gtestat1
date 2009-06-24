@@ -9,4 +9,5 @@ public interface IItemList {
 
     // alle Items in das Archiv schreiben
     public IPutResultList putAll(IArchive archive);
+
 }
