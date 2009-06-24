@@ -6,8 +6,12 @@ import wsiarchive.*;
 // Archiv, bei dem erst ein Archiv vollgeschrieben wird, dann das nächste etc.
 public class OverflowArchive implements IArchive {
 
+    private String name;
+    private IArchiveList archives;
+
     // Die Archive werden der Reihe nach gefüllt
     public OverflowArchive(String name, IArchiveList archives) {
+        
     }
     
     
