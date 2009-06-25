@@ -1,0 +1,11 @@
+package myarchive;
+
+import wsiarchive.*;
+
+// Kurzbeschreibung
+public interface IJournal {
+
+    // Archiv eines Items zurückgeben
+    public IArchive getArchiveById(IItemId id);
+
+}

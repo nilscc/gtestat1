@@ -1,0 +1,21 @@
+Class documentation
+<---- javadoc command: ---->
+/usr/lib/jvm/java-1.6.0-openjdk/bin/javadoc
+-author
+-version
+-nodeprecated
+-package
+-source
+1.6
+-noindex
+-notree
+-nohelp
+-nonavbar
+-d
+/home/nils/docs/uni/info2/gtestat1/archive/doc
+-classpath
+/usr/share/java/bluej-wsi/bluejcore.jar:/usr/share/java/bluej-wsi/junit.jar:/usr/share/java/bluej-wsi/tester.jar:/usr/share/java/bluej-wsi/tuebingen-test.jar:/usr/share/java/bluej-wsi/userlib/idraw.jar:/usr/share/java/bluej-wsi/userlib/adraw.jar:/usr/share/java/bluej-wsi/userlib/geometry.jar:/usr/share/java/bluej-wsi/userlib/colors.jar:/usr/share/java/bluej-wsi/userlib/draw.jar:/home/nils/docs/uni/info2/gtestat1/archive
+/home/nils/docs/uni/info2/gtestat1/archive/myarchive/NewJournalResult.java
+<---- end of javadoc command ---->
+javadoc: error - Cannot find doclet class com.sun.tools.doclets.standard.Standard
+1 error

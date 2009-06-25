@@ -1,0 +1,13 @@
+package myarchive;
+
+import wsiarchive.*;
+
+// Kurzbeschreibung
+public class EmptyItemId implements IItemIdList {
+
+
+    public int getSize (WORM w) {
+        throw new AssertionError("Calling an empty ID-List");
+    }
+
+}

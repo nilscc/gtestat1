@@ -1,0 +1,23 @@
+package myarchive;
+
+import wsiarchive.*;
+
+// Items für Testfälle
+public class ExampleItems {
+
+    // Ein paar schöne Items
+    public Item mp3s = new Item("MP3s", 1800);
+    Item videos = new Item("Videos", 4320);
+    Item bilder = new Item("Bilder", 62);
+    // Gesamtgröße: 6182
+    
+    // Und ganz einfache :)
+    Item item1 = new Item("Einfaches Item1", 10);
+    Item item2 = new Item("Einfaches Item2", 100);
+    Item item3 = new Item("Einfaches Item3", 500);
+    Item item4 = new Item("Einfaches Item4", 1000);
+    Item item5 = new Item("Einfaches Item5", 5000);
+    // Gesamtgröße: 6610
+    
+
+}

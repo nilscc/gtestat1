@@ -1,0 +1,25 @@
+package myarchive;
+
+import wsiarchive.*;
+
+// Liste von IDs
+public class PairItemId implements IItemIdList {
+
+    private IItemId first; // 1. ID der Liste
+    private IItemIdList rest; // Rest der Liste
+    
+    PairItemId (IItemId first, IItemIdList rest) {
+        this.first = first;
+        this.rest = rest;
+    }
+    
+    // ID hinzufügen
+    public void addId(IItemId id) {
+        if (this.rest instanceof EmptyIdList) {
+            this.rest = new PairItemId(id, new EmptyIdList());
+        } else {
+            this.rest.addId(id);
+        }
+    }
+
+}

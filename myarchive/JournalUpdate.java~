@@ -1,0 +1,16 @@
+package myarchive;
+
+
+
+// Kurzbeschreibung
+public class JournalUpdate implements IJournalResult {
+
+    private Journal journal; // Aktualisierte Liste von Journals
+    
+    JournalUpdate (Journal journal) {
+        this.journal = journal;
+    }
+    
+    public Journal journal () { return this.journal; }
+
+}

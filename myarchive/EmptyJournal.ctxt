@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=EmptyJournal()
+comment1.params=id
+comment1.target=IJournalResult\ getArchiveById(IItemId)
+comment2.params=id\ archive
+comment2.target=IJournalList\ add(IItemId,\ IArchive)
+numComments=3

@@ -1,0 +1,11 @@
+package myarchive;
+
+
+
+// Kurzbeschreibung
+public interface IItemIdList {
+
+    // Größe aller Items mit den IDs der Liste berechnen
+    public int getSize(WORM worm);
+
+}
