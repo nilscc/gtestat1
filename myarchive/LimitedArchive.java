@@ -8,16 +8,16 @@ public class LimitedArchive implements IArchive {
 
     private int size = 0; // Größe in MB
     private int used = 0; // Belegter Speicher in MB
-    private WORM worm; // Der eigentliche WORM-Speicher
+    private IArchive archive; // Das eigentliche Archiv
     
-    LimitedArchive (String name, int size) {
+    LimitedArchive (IArchive archive, int size) {
         this.size = size;
-        this.worm = new WORM(name);
+        this.archive = archive;
     }
     
     // Name des Archivs liefern
     public String getName() {
-        return this.worm.getName();
+        return this.archive.getName();
     }
 
     // Item ins Archiv schreiben
@@ -26,7 +26,7 @@ public class LimitedArchive implements IArchive {
         int i = item.getSize();
         if (this.getFree() >= i) {
             this.used += i;
-            return this.worm.put(item);
+            return this.archive.put(item);
         } else {
             return new FullPutResult();
         }
@@ -39,7 +39,7 @@ public class LimitedArchive implements IArchive {
     
     // Item aus Archiv auslesen
     public IGetResult get(IItemId id) {
-        return this.worm.get(id);
+        return this.archive.get(id);
     }
     
     // Freien Speicherplatz ausgeben

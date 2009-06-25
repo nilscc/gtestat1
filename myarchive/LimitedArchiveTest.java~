@@ -14,7 +14,7 @@ public class LimitedArchiveTest extends de.tuebingen.informatik.Test {
     // Gesamtgröße: 6182
     
     @Test
-    public void sda1() {
+    public void limited() {
         
         // Items hinzufügen, bei Videos sollte die Platte voll sein!
         IPutResult put;

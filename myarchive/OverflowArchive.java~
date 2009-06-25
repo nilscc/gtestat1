@@ -23,25 +23,22 @@ public class OverflowArchive implements IArchive {
 
     // Item ins Archiv schreiben
     public IPutResult put(Item item) {
-        if (this.archives instanceof PairArchiveList) {
-            IJournalResult j = ((PairArchiveList) this.archives).overflowPut(item);
-            if (j instanceof NewJournalResult) {
-                Journal journalResult = ((NewJournalResult) j).getJournal();
-                
-                IItemId id = journalResult.getItemId();
-                this.journal = this.journal.add(id, journalResult.getArchive());
-                
-                return new OKPutResult(id);
-            } else {
-                return new FullPutResult();
-            }
+        IJournalResult j = this.archives.overflowPut(item);
+
+        if (j instanceof NewJournalResult) {
+            Journal journalResult = ((NewJournalResult) j).getJournal();
+            
+            IItemId id = journalResult.getItemId();
+            this.journal = this.journal.add(id, journalResult.getArchive());
+            
+            return new OKPutResult(id);
         } else {
             return new FullPutResult();
         }
     }
     
     // Mehrere Items ins Archiv schreiben
-    public wsiarchive.IPutResultList putMultiple(wsiarchive.IItemList items) {
+    public wsiarchive.IPutResultList putMultiple(IItemList items) {
         return items.putAll(this);
     }
     

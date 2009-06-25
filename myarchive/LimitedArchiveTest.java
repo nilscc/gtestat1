@@ -5,7 +5,7 @@ import org.junit.*;
 
 public class LimitedArchiveTest extends de.tuebingen.informatik.Test {
 
-    IArchive sda1 = new LimitedArchive("SDA2", 5000);
+    IArchive sda1 = new LimitedArchive(new WORM("SDA1"), 5000);
     
     // Ein paar schöne Items
     Item mp3s = new Item("MP3s", 1800);
