@@ -4,4 +4,9 @@ import wsiarchive.*;
 
 // Liste von Archiven
 public interface IArchiveList {
+
+    // Methode für Overflow: put
+    // Effekt: Journal updaten
+    public IPutResult overflowPut (Item item, IJournalList journal);
+    
 }

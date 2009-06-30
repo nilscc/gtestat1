@@ -19,20 +19,21 @@ public class PairArchiveList implements IArchiveList {
     
     
     // Methode für Overflow: put
-    // Rückgabewert: Aktualisiertes Journal oder NoJournalResult
-    public IJournalResult overflowPut (Item item) {
+    // Effekt: Journal updaten
+    public IPutResult overflowPut (Item item, IArchive current) {
         IPutResult put = this.first.put(item);
         
         // Rekursion
         if (put instanceof FullPutResult && this.rest instanceof PairArchiveList) {
-            return ((PairArchiveList) this.rest).overflowPut(item);
+            return this.rest.overflowPut(item, current);
             
+        // Journal updaten
         } else if (put instanceof OKPutResult) {
-            Journal newJournal = new Journal( ((OKPutResult) put).getId(), this.first);
-            return new NewJournalResult(newJournal);
-            
-        } else {
-            return new NoJournalResult();
+            //Journal newJournal = new Journal( ((OKPutResult) put).getId(), this.first);
+            //journal.add(((OKPutResult) put).getId(), this.first);
+            current.addJournal(((OKPutResult) put).getId(), this.first);
         }
+        
+        return put;
     }
 }

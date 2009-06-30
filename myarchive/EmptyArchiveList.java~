@@ -8,8 +8,7 @@ public class EmptyArchiveList implements IArchiveList {
     }
     
     // Methode für Overflow: put
-    // Rückgabewert: Aktualisiertes Journal oder NoJournalResult
-    public IJournalResult overflowPut (Item item) {
+    public IPutResult overflowPut (Item item, IJournalList journal) {
         return new FullPutResult();
     }
 }

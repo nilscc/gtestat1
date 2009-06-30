@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=EmptyArchiveList()
-comment1.params=item
-comment1.target=IJournalResult\ overflowPut(Item)
+comment1.params=item\ current
+comment1.target=IPutResult\ overflowPut(Item,\ IArchive)
 numComments=2

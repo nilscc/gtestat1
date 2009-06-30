@@ -23,23 +23,18 @@ public class OverflowArchive implements IArchive {
 
     // Item ins Archiv schreiben
     public IPutResult put(Item item) {
-        IJournalResult j = this.archives.overflowPut(item);
-
-        if (j instanceof NewJournalResult) {
-            Journal journalResult = ((NewJournalResult) j).getJournal();
-            
-            IItemId id = journalResult.getItemId();
-            this.journal = this.journal.add(id, journalResult.getArchive());
-            
-            return new OKPutResult(id);
-        } else {
-            return new FullPutResult();
-        }
+        return this.archives.overflowPut(item, this);
     }
     
-    // Mehrere Items ins Archiv schreiben
+    // Mehrere Items ins Archiv schreiben (wsiarchive)
     public wsiarchive.IPutResultList putMultiple(wsiarchive.IItemList items) {
         return items.putAll(this);
+    }
+    
+    // Mehrere Items ins Archiv schreiben (myarchive)
+    public IPutResultList putMultiple(IItemList items) {
+        wsiarchive.IItemList wsiList = items.toWSIItemList();
+        return (this.putMultiple(wsiList)).toMyPutResultList();
     }
     
     // Item aus Archiv auslesen
@@ -49,9 +44,15 @@ public class OverflowArchive implements IArchive {
         if (get instanceof OKJournalResult) {
             IArchive archive = ((OKJournalResult) get).getJournal().getArchive();
             return archive.get(id);
+            
         } else {
             return new NoItemResult();
         }
+    }
+    
+    // Neues ItemID-Archiv-Paar zum Journal hinzufügen
+    public void addJournal (IItemId id, IArchive archive) {
+        this.journal = this.journal.add(id, archive);
     }
 
 }

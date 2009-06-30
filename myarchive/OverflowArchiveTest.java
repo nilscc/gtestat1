@@ -29,8 +29,8 @@ public class OverflowArchiveTest extends de.tuebingen.informatik.Test {
     Item videos = new Item("Videos", 4320);
     
     // Als Liste:
-    wsiarchive.IItemList items1 = new wsiarchive.PairItemList(mp3s, new wsiarchive.PairItemList(bilder, new wsiarchive.EmptyItemList()));
-    wsiarchive.IItemList items2 = new wsiarchive.PairItemList(mp3s, new wsiarchive.PairItemList(bilder, new wsiarchive.PairItemList(videos, new wsiarchive.EmptyItemList())));
+    IItemList items1 = new PairItemList(mp3s, new PairItemList(bilder, new EmptyItemList()));
+    IItemList items2 = new PairItemList(mp3s, new PairItemList(bilder, new PairItemList(videos, new EmptyItemList())));
     
     @Test
     public void overflow () {
@@ -57,7 +57,9 @@ public class OverflowArchiveTest extends de.tuebingen.informatik.Test {
         checkExpect(get instanceof ItemResult, true);
         
         // Listen hinzufügen TODO!
-        puts = overflow.putMultiple(items1);
+        puts = overflow.putMultiple(items1.toWSIItemList());
+        checkExpect(puts, 
+        //checkExpect(puts, (new PairPutResultList(new OKPutResult(), new PairPutResultList(new OKPutResult(), new EmptyPutResultList()))).toWSIPutResultList());
         //checkExpect(puts instanceof OKPutResult, true);
     }
 }
