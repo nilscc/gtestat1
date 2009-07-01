@@ -6,19 +6,29 @@ import wsiarchive.*;
 public class Journal {
 
     private IItemId id; // ID des Items
-    private IArchive archive; // Archiv auf dem Item gespeichert wurde
+    private IArchiveList archives; // Archiv auf dem Item gespeichert wurde
     
-    Journal (IItemId id, IArchive archive) {
+    Journal (IItemId id, IArchiveList archives) {
         this.id = id;
-        this.archive = archive;
+        this.archives = archives;
     }
     
     // Gets:
     public IItemId getItemId () {
         return this.id;
     }
-    public IArchive getArchive () {
-        return this.archive;
+    public IArchiveList getArchives () {
+        return this.archives;
     }
+    
+    // Archiv zur Liste hinzufügen
+    public void add (IArchive archive) {
+        if (this.archives instanceof PairArchiveList) {
+            ((PairArchiveList) this.archives).add(archive);
+        } else {
+            this.archives = new PairArchiveList(archive, new EmptyArchiveList());
+        }
+    }
+    
 
 }

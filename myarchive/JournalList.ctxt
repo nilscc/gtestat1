@@ -4,5 +4,5 @@ comment0.target=JournalList(Journal,\ IJournalList)
 comment1.params=id
 comment1.target=IJournalResult\ getArchiveById(IItemId)
 comment2.params=id\ archive
-comment2.target=IJournalList\ add(IItemId,\ IArchive)
+comment2.target=void\ add(IItemId,\ IArchive)
 numComments=3

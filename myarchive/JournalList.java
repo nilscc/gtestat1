@@ -23,11 +23,18 @@ public class JournalList implements IJournalList {
     }
     
     // Item hinzufügen
-    public IJournalList add (IItemId id, IArchive archive) {
-        if (this.rest instanceof EmptyJournal) {
-            return new JournalList(this.first, new JournalList(new Journal(id, archive), this.rest));
-        } else {
-            return new JournalList(this.first, this.rest.add(id, archive));
+    public void add (IItemId id, IArchive archive) {
+        IJournalResult result = this.getArchiveById(id);
+        
+        IArchiveList archives = new PairArchiveList(archive, new EmptyArchiveList());
+        
+        if (result instanceof OKJournalResult) {
+            ((OKJournalResult) result).getJournal().add(archive);
+        } else if (this.rest instanceof EmptyJournal) {
+            this.rest = new JournalList(new Journal(id, archives), new EmptyJournal());
+            
+        } else if (this.rest instanceof JournalList) {
+            ((JournalList) this.rest).add(id, archive);
         }
     }
 

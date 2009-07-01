@@ -9,6 +9,6 @@ public interface IJournalList {
     public IJournalResult getArchiveById (IItemId id);
     
     // Item hinzufügen
-    public IJournalList addItemId (IItemId id, IArchive archive);
+    public IJournalList add (IItemId id, IArchive archive);
 
 }

@@ -8,7 +8,7 @@ public class OverflowArchive implements IArchive {
 
     private String name; // Name
     private IArchiveList archives; // Archive
-    private IJournalList journal = new EmptyJournal(); // Merke, wo welches Item gespeichert wurde
+    private IJournalList journals = new EmptyJournal(); // Merke, wo welches Item gespeichert wurde
 
     // Die Archive werden der Reihe nach gefüllt
     public OverflowArchive(String name, IArchiveList archives) {
@@ -39,11 +39,16 @@ public class OverflowArchive implements IArchive {
     
     // Item aus Archiv auslesen
     public IGetResult get(IItemId id) {
-        IJournalResult get = this.journal.getArchiveById(id);
+        IJournalResult get = this.journals.getArchiveById(id);
         
         if (get instanceof OKJournalResult) {
-            IArchive archive = ((OKJournalResult) get).getJournal().getArchive();
-            return archive.get(id);
+            IArchiveList archives = ((OKJournalResult) get).getJournal().getArchives();
+            
+            if (archives instanceof PairArchiveList) {
+                return ((PairArchiveList) archives).getFirst().get(id);
+            } else {
+                return new NoItemResult();
+            }
             
         } else {
             return new NoItemResult();
@@ -52,7 +57,12 @@ public class OverflowArchive implements IArchive {
     
     // Neues ItemID-Archiv-Paar zum Journal hinzufügen
     public void addJournal (IItemId id, IArchive archive) {
-        this.journal = this.journal.add(id, archive);
+        if (this.journals instanceof JournalList) {
+            ((JournalList) this.journals).add(id, archive);
+        } else {
+            Journal j = new Journal (id, new PairArchiveList(archive, new EmptyArchiveList()));
+            this.journals = new JournalList(j, new EmptyJournal());
+        }
     }
 
 }

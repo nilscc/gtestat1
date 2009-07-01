@@ -13,7 +13,9 @@ public class EmptyJournal implements IJournalList {
     
     // Item hinzufügen
     public IJournalList add (IItemId id, IArchive archive) {
-        return new JournalList(new Journal(id, archive), this);
+        IArchiveList archives = new PairArchiveList(archive, new EmptyArchiveList());
+        
+        return new JournalList(new Journal(id, archives), this);
     }
 
 }

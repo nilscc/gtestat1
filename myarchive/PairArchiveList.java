@@ -29,12 +29,21 @@ public class PairArchiveList implements IArchiveList {
             
         // Journal updaten
         } else if (put instanceof OKPutResult) {
-            // Journal des Overflowarchives aktualisieren
             if (current instanceof OverflowArchive) {
                 ((OverflowArchive) current).addJournal(((OKPutResult) put).getId(), this.first);
             }
         }
         
         return put;
+    }
+    
+    
+    // Archiv hinzufügen
+    public void add (IArchive archive) {
+        if (this.rest instanceof EmptyArchiveList) {
+            this.rest = new PairArchiveList(archive, this.rest);
+        } else {
+            ((PairArchiveList) this.rest).add(archive);
+        }
     }
 }

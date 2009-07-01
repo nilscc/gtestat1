@@ -5,4 +5,6 @@ comment1.target=IArchive\ getFirst()
 comment2.target=IArchiveList\ getRest()
 comment3.params=item\ current
 comment3.target=IPutResult\ overflowPut(Item,\ IArchive)
-numComments=4
+comment4.params=archive
+comment4.target=void\ add(IArchive)
+numComments=5
